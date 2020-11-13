@@ -7,9 +7,17 @@
         v-model="collapsed"
         :trigger="null"
         collapsible
+        width="256px"
       >
-        <div class="logo">Vue Pro</div>
-        <SiderMenu />
+        <h1
+          class="logo"
+          :style="{
+            color: navTheme === 'dark' ? '#FFF' : 'rgba(0, 0, 0, 0.85)'
+          }"
+        >
+          {{ !collapsed ? "Vue Pro" : "" }}
+        </h1>
+        <SiderMenu :theme="navTheme" />
       </a-layout-sider>
       <a-layout>
         <a-layout-header style="background: #fff; padding: 0">
@@ -20,14 +28,7 @@
           />
           <Header />
         </a-layout-header>
-        <a-layout-content
-          :style="{
-            margin: '24px 16px',
-            padding: '24px',
-            background: '#fff',
-            minHeight: '280px'
-          }"
-        >
+        <a-layout-content class="layoutContent">
           <router-view></router-view>
         </a-layout-content>
         <a-layout-footer style="textAlign: center">
@@ -87,7 +88,12 @@ export default {
     text-align: center;
     background: rgba(255, 255, 255, 0.2);
     margin: 16px;
-    color: #fff;
+  }
+  .layoutContent {
+    margin: 24px 16px;
+    padding: 24px;
+    background: #fff;
+    min-height: calc(100vh - 181px);
   }
 }
 </style>
