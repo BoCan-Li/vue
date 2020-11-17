@@ -1,6 +1,8 @@
+.vscode
 .DS_Store
 node_modules
 /dist
+deploy.sh
 
 
 # local env files
