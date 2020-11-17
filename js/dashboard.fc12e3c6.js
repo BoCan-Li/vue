@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["dashboard"],{"81c0":function(n,e,a){"use strict";a.r(e);var t=function(){var n=this,e=n.$createElement,a=n._self._c||e;return a("div",[n._v(" Dashboard ")])},r=[],s=a("2877"),c={},l=Object(s["a"])(c,t,r,!1,null,null,null);e["default"]=l.exports}}]);
+//# sourceMappingURL=dashboard.fc12e3c6.js.map
