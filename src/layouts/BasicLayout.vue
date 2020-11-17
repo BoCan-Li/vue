@@ -12,7 +12,7 @@
         <h1
           class="logo"
           :style="{
-            color: navTheme === 'dark' ? '#FFF' : 'rgba(0, 0, 0, 0.85)',
+            color: navTheme === 'dark' ? '#FFF' : 'rgba(0, 0, 0, 0.85)'
           }"
         >
           {{ !collapsed ? "Vue Pro" : "" }}
@@ -44,10 +44,10 @@
 </template>
 
 <script>
-import Header from "./Header"
-import Footer from "./Footer"
-import SiderMenu from "./SiderMenu"
-import SettingDrawer from "../components/SettingDrawer"
+import Header from "./Header";
+import Footer from "./Footer";
+import SiderMenu from "./SiderMenu";
+import SettingDrawer from "../components/SettingDrawer";
 
 export default {
   name: "BasicLayout",
@@ -55,22 +55,22 @@ export default {
     Header,
     Footer,
     SiderMenu,
-    SettingDrawer,
+    SettingDrawer
   },
   data() {
     return {
-      collapsed: false,
-    }
+      collapsed: false
+    };
   },
   computed: {
     navTheme() {
-      return this.$route.query.navTheme || "dark"
+      return this.$route.query.navTheme || "dark";
     },
     navLayout() {
-      return this.$route.query.navLayout || "left"
-    },
-  },
-}
+      return this.$route.query.navLayout || "left";
+    }
+  }
+};
 </script>
 
 <style lang="less">
