@@ -34,10 +34,10 @@ export default {
       form: {
         layout: "horizontal",
         fieldA: "",
-        fieldB: "",
+        fieldB: ""
       },
       validateStatus: "",
-      helpText: "",
+      helpText: ""
     };
   },
   watch: {
@@ -51,8 +51,8 @@ export default {
           this.helpText = "";
         }
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
   computed: {
     formItemLayout() {
@@ -60,7 +60,7 @@ export default {
       return layout === "horizontal"
         ? {
             labelCol: { span: 4 },
-            wrapperCol: { span: 14 },
+            wrapperCol: { span: 14 }
           }
         : {};
     },
@@ -68,10 +68,10 @@ export default {
       const { layout } = this.form;
       return layout === "horizontal"
         ? {
-            wrapperCol: { span: 14, offset: 4 },
+            wrapperCol: { span: 14, offset: 4 }
           }
         : {};
-    },
+    }
   },
   methods: {
     handleClick() {
@@ -82,7 +82,7 @@ export default {
         this.validateStatus = "";
         this.helpText = "";
       }
-    },
-  },
+    }
+  }
 };
 </script>
