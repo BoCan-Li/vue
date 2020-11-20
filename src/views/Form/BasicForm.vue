@@ -1,7 +1,7 @@
 <template>
-  <a-form :layout="form.layout" :model="form" v-bind="formItemLayout">
+  <a-form :layout="formLayout" :form="form" v-bind="formItemLayout">
     <a-form-item label="Form Layout">
-      <a-radio-group v-model="form.layout">
+      <a-radio-group v-model="formLayout">
         <a-radio-button value="horizontal"> Horizontal </a-radio-button>
         <a-radio-button value="vertical"> Vertical </a-radio-button>
         <a-radio-button value="inline"> Inline </a-radio-button>
@@ -9,18 +9,26 @@
     </a-form-item>
     <a-form-item
       label="Field A"
-      :validate-status="validateStatus"
-      :help="helpText"
+      :label-col="formItemLayout.labelCol"
+      :wrapper-col="formItemLayout.wrapperCol"
     >
       <a-input
-        v-model="form.fieldA"
+        v-decorator="[
+          'fieldA',
+          {
+            initialValue: fieldA,
+            rules: [{ required: true, min: 6, message: '必须大于5个字符' }]
+          }
+        ]"
         placeholder="input placeholder"
-        validate-status="validating"
-        help="The information is being validated..."
       />
     </a-form-item>
-    <a-form-item label="Field B">
-      <a-input v-model="form.fieldB" placeholder="input placeholder" />
+    <a-form-item
+      label="Field B"
+      :label-col="formItemLayout.labelCol"
+      :wrapper-col="formItemLayout.wrapperCol"
+    >
+      <a-input v-decorator="['fieldB']" placeholder="input placeholder" />
     </a-form-item>
     <a-form-item :wrapper-col="buttonItemLayout.wrapperCol">
       <a-button type="primary" @click="handleClick"> Submit </a-button>
@@ -30,29 +38,11 @@
 <script>
 export default {
   data() {
+    this.form = this.$form.createForm(this);
     return {
-      form: {
-        layout: "horizontal",
-        fieldA: "",
-        fieldB: ""
-      },
-      validateStatus: "",
-      helpText: ""
+      formLayout: "horizontal",
+      fieldA: "hello"
     };
-  },
-  watch: {
-    "form.fieldA": {
-      handler(value) {
-        if (value.length < 5) {
-          this.validateStatus = "error";
-          this.helpText = "输入内容不能少于5个字符";
-        } else {
-          this.validateStatus = "";
-          this.helpText = "";
-        }
-      },
-      deep: true
-    }
   },
   computed: {
     formItemLayout() {
@@ -75,13 +65,11 @@ export default {
   },
   methods: {
     handleClick() {
-      if (this.form.fieldA.length < 5) {
-        this.validateStatus = "error";
-        this.helpText = "输入内容不能少于5个字符";
-      } else {
-        this.validateStatus = "";
-        this.helpText = "";
-      }
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          Object.assign(this, values);
+        }
+      });
     }
   }
 };

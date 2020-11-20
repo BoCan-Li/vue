@@ -6,6 +6,7 @@ module.exports = {
       }
     }
   },
+  // github 仓库名称为 vue，在github page上面publicPath需要和仓库名一致
   publicPath: process.env.NODE_ENV === "development" ? "/" : "/vue/",
   devServer: {
     proxy: {
