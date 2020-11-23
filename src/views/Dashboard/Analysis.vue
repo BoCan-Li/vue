@@ -18,7 +18,6 @@ export default {
   },
   computed: {
     option() {
-      console.log(this.chartOption);
       return this.chartOption;
     }
   },

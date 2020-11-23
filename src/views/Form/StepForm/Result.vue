@@ -1,5 +1,5 @@
 <template>
   <div>
-    result
+    操作成功
   </div>
 </template>
